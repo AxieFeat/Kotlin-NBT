@@ -6,6 +6,7 @@ import xyz.arial.nbt.impl.ByteTagImpl
  * A tag that holds a byte value.
  */
 interface ByteTag : NumberTag, ScopedTag<ByteTag> {
+
     /**
      * Gets the underlying value of this byte tag.
      *

@@ -1,7 +1,5 @@
 package xyz.arial.nbt
 
-import xyz.arial.nbt.Tag
-
 /**
  * A tag holding a number value.
  */
