@@ -14,29 +14,6 @@ interface ByteTag : NumberTag, ScopedTag<ByteTag> {
     val value: Byte
 
     companion object {
-        /**
-         * Gets a byte tag representing the given value.
-         *
-         * @param value the backing value
-         * @return a byte tag representing the value
-         */
-        fun of(value: Byte): ByteTag {
-            return ByteTagImpl.of(value)
-        }
-
-        /**
-         * Gets the byte tag representing the given value.
-         *
-         *
-         * The boolean here will be converted to its byte representation, i.e.
-         * ONE for a true value, and ZERO for a false one.
-         *
-         * @param value the value
-         * @return the byte tag representing the value
-         */
-        fun of(value: Boolean): ByteTag {
-            return if (value) ONE else ZERO
-        }
 
         /**
          * The byte tag representing the constant zero.
@@ -61,5 +38,29 @@ interface ByteTag : NumberTag, ScopedTag<ByteTag> {
          * The tag type for this tag.
          */
         val TYPE: TagType<ByteTag> = ByteTagImpl.createType()
+
+        /**
+         * Gets a byte tag representing the given value.
+         *
+         * @param value the backing value
+         * @return a byte tag representing the value
+         */
+        fun of(value: Byte): ByteTag {
+            return ByteTagImpl.of(value)
+        }
+
+        /**
+         * Gets the byte tag representing the given value.
+         *
+         *
+         * The boolean here will be converted to its byte representation, i.e.
+         * ONE for a true value, and ZERO for a false one.
+         *
+         * @param value the value
+         * @return the byte tag representing the value
+         */
+        fun of(value: Boolean): ByteTag {
+            return if (value) ONE else ZERO
+        }
     }
 }

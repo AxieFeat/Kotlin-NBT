@@ -14,7 +14,7 @@ internal data class IntTagImpl(
 
     override val id: Int = IntTag.ID
 
-    override val type: TagType<IntTag> = IntTag.TYPE
+    override fun type(): TagType<IntTag> = IntTag.TYPE
 
     @Throws(IOException::class)
     override fun write(output: DataOutput) {

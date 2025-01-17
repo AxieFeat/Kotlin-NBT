@@ -44,7 +44,7 @@ interface ByteArrayTag : ListCollectionTag<ByteTag>, ScopedTag<ByteArrayTag> {
 
     override fun add(index: Int, element: ByteTag)
 
-    fun remove(index: Int): ByteTag
+    //fun remove(index: Int): ByteTag
 
     override fun clear()
 

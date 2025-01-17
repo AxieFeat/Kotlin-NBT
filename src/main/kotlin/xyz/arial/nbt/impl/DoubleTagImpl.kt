@@ -16,7 +16,7 @@ internal data class DoubleTagImpl(
 
     override val id: Int = DoubleTag.ID
 
-    override val type: TagType<DoubleTag> = DoubleTag.TYPE
+    override fun type(): TagType<DoubleTag> = DoubleTag.TYPE
 
     @Throws(IOException::class)
     override fun write(output: DataOutput) {

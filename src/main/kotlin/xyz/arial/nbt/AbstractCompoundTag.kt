@@ -23,7 +23,7 @@ internal abstract class AbstractCompoundTag<T : CompoundTag> : CompoundTag {
 
     override val id: Int = ID
 
-    override val type: TagType<CompoundTag> = TYPE
+    override fun type(): TagType<CompoundTag> = TYPE
 
     override val size: Int
         get() = data.size
@@ -116,7 +116,7 @@ internal abstract class AbstractCompoundTag<T : CompoundTag> : CompoundTag {
     override fun getList(name: String, elementType: Int, defaultValue: ListTag): ListTag {
         if (type(name) != ListTag.ID) return defaultValue
         val tag: ListTag = data[name] as ListTag
-        return if (!tag.isEmpty && tag.elementType() != elementType) defaultValue else tag
+        return if (!tag.empty && tag.elementType() != elementType) defaultValue else tag
     }
 
     override fun getCompound(name: String, defaultValue: CompoundTag): CompoundTag {
@@ -303,7 +303,7 @@ internal abstract class AbstractCompoundTag<T : CompoundTag> : CompoundTag {
     override fun visit(visitor: StreamingTagVisitor): StreamingTagVisitor.ValueResult {
         for (entry in data.entries) {
             val tag: Tag = entry.value
-            val entryType: TagType<*> = tag.type
+            val entryType: TagType<*> = tag.type()
             when (visitor.visitEntry(entryType)) {
                 StreamingTagVisitor.EntryResult.HALT -> return StreamingTagVisitor.ValueResult.HALT
                 StreamingTagVisitor.EntryResult.BREAK -> return visitor.visitContainerEnd()

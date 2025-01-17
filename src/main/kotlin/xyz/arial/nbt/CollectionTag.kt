@@ -29,7 +29,7 @@ interface CollectionTag<T : Tag> : Iterable<T>, Tag {
      * @return true if this collection tag contains no elements, false
      * otherwise
      */
-    val isEmpty: Boolean
+    val empty: Boolean
 
     /**
      * Attempts to add the given tag to this collection at the given index.

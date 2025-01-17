@@ -15,10 +15,6 @@ internal data class ImmutableListTagImpl(
         return elementType
     }
 
-    fun getData(): List<Tag> {
-        return data
-    }
-
     override fun add(tag: Tag): ImmutableListTag {
         if (!canAdd(tag)) addUnsupported(tag.id, elementType())
         return ImmutableListTagImpl(data.plus(tag), elementType())

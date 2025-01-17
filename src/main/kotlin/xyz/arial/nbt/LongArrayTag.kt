@@ -43,7 +43,7 @@ interface LongArrayTag : ListCollectionTag<LongTag>, ScopedTag<LongArrayTag> {
 
     override fun add(index: Int, element: LongTag)
 
-    fun remove(index: Int): LongTag
+    //fun remove(index: Int): LongTag
 
     override fun clear()
 

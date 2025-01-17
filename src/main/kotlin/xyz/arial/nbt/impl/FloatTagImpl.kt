@@ -15,7 +15,7 @@ internal data class FloatTagImpl(
 
     override val id: Int = FloatTag.ID
 
-    override val type: TagType<FloatTag> = FloatTag.TYPE
+    override fun type(): TagType<FloatTag> = FloatTag.TYPE
 
     @Throws(IOException::class)
     override fun write(output: DataOutput) {

@@ -43,7 +43,7 @@ interface IntArrayTag : ListCollectionTag<IntTag>, ScopedTag<IntArrayTag> {
 
     override fun add(index: Int, element: IntTag)
 
-    fun remove(index: Int): IntTag
+   // fun remove(index: Int): IntTag
 
     override fun clear()
 

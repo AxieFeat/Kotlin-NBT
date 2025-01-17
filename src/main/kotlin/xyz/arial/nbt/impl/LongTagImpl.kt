@@ -14,7 +14,7 @@ internal data class LongTagImpl(
 
     override val id: Int = LongTag.ID
 
-    override val type: TagType<LongTag> = LongTag.TYPE
+    override fun type(): TagType<LongTag> = LongTag.TYPE
 
     @Throws(IOException::class)
     override fun write(output: DataOutput) {

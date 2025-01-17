@@ -25,12 +25,12 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
 
     override val id: Int = ID
 
-    override val type: TagType<ListTag> = TYPE
+    override fun type(): TagType<ListTag> = TYPE
 
     override val size: Int
         get() = data.size
 
-    override val isEmpty: Boolean
+    override val empty: Boolean
         get() = data.isEmpty()
 
     override fun contains(element: Tag): Boolean {
@@ -291,7 +291,7 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
                 var i = 0
                 while (i < size) {
                     val value = get(i)
-                    when (visitor.visitElement(value.type, i)) {
+                    when (visitor.visitElement(value.type(), i)) {
                         StreamingTagVisitor.EntryResult.HALT -> return StreamingTagVisitor.ValueResult.HALT
                         StreamingTagVisitor.EntryResult.BREAK -> return visitor.visitContainerEnd()
                         StreamingTagVisitor.EntryResult.SKIP -> ++i

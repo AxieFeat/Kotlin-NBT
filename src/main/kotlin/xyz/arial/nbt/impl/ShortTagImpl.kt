@@ -14,7 +14,7 @@ internal data class ShortTagImpl(
 
     override val id: Int = ShortTag.ID
 
-    override val type: TagType<ShortTag> = ShortTag.TYPE
+    override fun type(): TagType<ShortTag> = ShortTag.TYPE
 
     @Throws(IOException::class)
     override fun write(output: DataOutput) {

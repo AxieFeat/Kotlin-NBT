@@ -10,10 +10,6 @@ internal data class ImmutableCompoundTagImpl(
     override val data: PMap<String, Tag>
 ) : AbstractCompoundTag<ImmutableCompoundTag>(), ImmutableCompoundTag {
 
-    fun getData(): Map<String, Tag> {
-        return data
-    }
-
     override fun put(name: String, value: Tag): ImmutableCompoundTag {
         return ImmutableCompoundTagImpl(data.plus(name, value))
     }

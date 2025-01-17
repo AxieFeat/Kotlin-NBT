@@ -14,7 +14,7 @@ internal data class StringTagImpl(
 
     override val id: Int = StringTag.ID
 
-    override val type: TagType<StringTag> = StringTag.TYPE
+    override fun type(): TagType<StringTag> = StringTag.TYPE
 
     @Throws(IOException::class)
     override fun write(output: DataOutput) {

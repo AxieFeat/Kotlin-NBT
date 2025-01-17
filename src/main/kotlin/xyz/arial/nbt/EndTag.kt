@@ -12,7 +12,7 @@ class EndTag private constructor() : ScopedTag<EndTag> {
 
     override val id: Int = ID
 
-    override val type: TagType<EndTag> = TYPE
+    override fun type(): TagType<EndTag> = TYPE
 
     override fun write(output: DataOutput) {
         // Nothing to write for end tags

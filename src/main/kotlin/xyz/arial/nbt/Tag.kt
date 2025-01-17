@@ -16,14 +16,14 @@ interface Tag {
      *
      * @return the ID of this tag
      */
-   val id: Int
+    val id: Int
 
     /**
      * Gets the type of this tag.
      *
      * @return the type of this tag
      */
-    val type: TagType<*>
+    fun type(): TagType<*>
 
     /**
      * Writes this tag's contents to the given output.
@@ -68,3 +68,4 @@ interface Tag {
      */
     fun copy(): Tag
 }
+

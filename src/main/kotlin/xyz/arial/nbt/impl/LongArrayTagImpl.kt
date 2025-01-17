@@ -1,6 +1,5 @@
 package xyz.arial.nbt.impl
 
-import net.aquamine.nbt.*
 import xyz.arial.nbt.AbstractListCollectionTag
 import xyz.arial.nbt.ArrayUtil
 import xyz.arial.nbt.LongArrayTag
@@ -21,14 +20,14 @@ internal data class LongArrayTagImpl(
 
     override val id: Int = LongArrayTag.ID
 
-    override val type: TagType<LongArrayTag> = LongArrayTag.TYPE
+    override fun type(): TagType<LongArrayTag> = LongArrayTag.TYPE
 
     override val elementType: Int = LongTag.ID
 
     override val size: Int
         get() = data.size
 
-    override val isEmpty: Boolean
+    override val empty: Boolean
         get() = data.isEmpty()
 
     override fun get(index: Int): LongTag {
@@ -58,7 +57,7 @@ internal data class LongArrayTagImpl(
         add(index, element.value)
     }
 
-    override fun remove(index: Int): LongTag {
+    override fun removeAt(index: Int): LongTag {
         val old: LongTag = get(index)
         data = ArrayUtil.remove(data, index)
         return old

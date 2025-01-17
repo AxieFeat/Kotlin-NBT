@@ -14,7 +14,7 @@ internal data class ByteTagImpl(
 
     override val id: Int = ByteTag.ID
 
-    override val type: TagType<ByteTag> = ByteTag.TYPE
+    override fun type(): TagType<ByteTag> = ByteTag.TYPE
 
     @Throws(IOException::class)
     override fun write(output: DataOutput) {
@@ -68,7 +68,7 @@ internal data class ByteTagImpl(
     override fun hashCode(): Int {
         var result = value
         result = (31 * result + id).toByte()
-        result = (31 * result + type.hashCode()).toByte()
+        result = (31 * result + type().hashCode()).toByte()
         return result.toInt()
     }
 
