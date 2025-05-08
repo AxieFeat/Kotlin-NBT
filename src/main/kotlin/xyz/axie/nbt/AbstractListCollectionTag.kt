@@ -12,4 +12,5 @@ internal abstract class AbstractListCollectionTag<T : Tag> : AbstractList<T>(), 
     override fun tryAdd(tag: T): Boolean {
         return add(tag)
     }
+
 }

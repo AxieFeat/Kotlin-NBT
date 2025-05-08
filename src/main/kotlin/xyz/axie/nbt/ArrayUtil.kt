@@ -67,4 +67,5 @@ internal object ArrayUtil {
         if (index < length - 1) System.arraycopy(original, index + 1, result, index, length - index - 1)
         return result
     }
+
 }

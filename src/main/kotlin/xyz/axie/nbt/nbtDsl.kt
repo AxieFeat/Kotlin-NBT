@@ -9,8 +9,9 @@ internal annotation class NBTDsl
 /**
  * Creates a new compound tag from the given [builder].
  *
- * @param builder the builder
- * @return a new compound tag
+ * @param builder The builder.
+ *
+ * @return A new compound tag.
  */
 @NBTDsl
 @JvmSynthetic
@@ -19,8 +20,9 @@ inline fun compound(builder: CompoundTag.Builder.() -> Unit): CompoundTag = Immu
 /**
  * Creates a new compound tag builder and applies the given [builder] to it.
  *
- * @param builder the builder
- * @return a new compound tag builder
+ * @param builder The builder.
+ *
+ * @return A new compound tag builder.
  */
 @NBTDsl
 @JvmSynthetic
@@ -29,8 +31,9 @@ inline fun buildCompound(builder: CompoundTag.Builder.() -> Unit): CompoundTag.B
 /**
  * Creates a new list tag from the given [builder].
  *
- * @param builder the builder
- * @return a new list tag
+ * @param builder The builder.
+ *
+ * @return A new list tag.
  */
 @NBTDsl
 @JvmSynthetic
@@ -39,8 +42,9 @@ inline fun list(builder: ListTag.Builder.() -> Unit): ListTag = ImmutableListTag
 /**
  * Creates a new list tag builder and applies the given [builder] to it.
  *
- * @param builder the builder
- * @return a new list tag builder
+ * @param builder The builder.
+ *
+ * @return A new list tag builder.
  */
 @NBTDsl
 @JvmSynthetic

@@ -4,13 +4,14 @@ import xyz.axie.nbt.impl.IntArrayTagImpl
 import java.util.function.IntConsumer
 
 /**
- * A tag that holds a int array.
+ * A tag that holds an int array.
  */
 interface IntArrayTag : ListCollectionTag<IntTag>, ScopedTag<IntArrayTag> {
+
     /**
      * Gets the backing data for this tag.
      *
-     * @return the backing data
+     * @return The backing data.
      */
     var data: IntArray
 
@@ -19,8 +20,9 @@ interface IntArrayTag : ListCollectionTag<IntTag>, ScopedTag<IntArrayTag> {
     /**
      * Sets the element at the given index to the given value.
      *
-     * @param index the index
-     * @param value the value
+     * @param index The index.
+     *
+     * @param value The value.
      */
     fun set(index: Int, value: Int)
 
@@ -29,38 +31,39 @@ interface IntArrayTag : ListCollectionTag<IntTag>, ScopedTag<IntArrayTag> {
     /**
      * Adds the given value to this tag.
      *
-     * @param value the value to add
+     * @param value The value to add.
      */
     fun add(value: Int)
 
     /**
      * Adds the given value to this tag at the given index.
      *
-     * @param index the index
-     * @param value the value to add
+     * @param index The index.
+     * @param value The value to add.
      */
     fun add(index: Int, value: Int)
 
     override fun add(index: Int, element: IntTag)
-
-   // fun remove(index: Int): IntTag
 
     override fun clear()
 
     /**
      * Performs the given action on every element in this tag.
      *
-     * @param action the action to perform
+     * @param action The action to perform.
      */
     fun forEachInt(action: IntConsumer)
 
     companion object {
+
         /**
          * Creates a new int array tag with the given data.
          *
-         * @param data the data
-         * @return a new int array tag
+         * @param data The data.
+         *
+         * @return A new int array tag.
          */
+        @JvmStatic
         fun of(data: IntArray): IntArrayTag {
             return IntArrayTagImpl(data)
         }
@@ -77,6 +80,9 @@ interface IntArrayTag : ListCollectionTag<IntTag>, ScopedTag<IntArrayTag> {
         /**
          * The tag type for this tag.
          */
+        @JvmStatic
         val TYPE: TagType<IntArrayTag> = IntArrayTagImpl.createType()
+
     }
+
 }

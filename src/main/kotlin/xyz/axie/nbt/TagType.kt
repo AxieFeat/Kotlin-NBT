@@ -8,21 +8,21 @@ import java.io.IOException
  * A type of tag that can be used to perform certain operations on tags of the
  * given type [T].
  *
- * @param T the actual tag type
+ * @param T The actual tag type.
  */
 interface TagType<T : Tag> {
 
     /**
      * Gets the name of the tag.
      *
-     * @return the name
+     * @return The name.
      */
     val name: String
 
     /**
      * Gets the pretty print name of the tag.
      *
-     * @return the pretty print name
+     * @return The pretty print name.
      */
     val prettyName: String
 
@@ -31,7 +31,7 @@ interface TagType<T : Tag> {
      * they just hold a value, like numeric and string tags (true), or they are
      * composed of other types, such as arrays, lists, and compounds (false).
      *
-     * @return whether tags of this type are value tags
+     * @return Whether tags of this type are value tags.
      */
     val isValue: Boolean
         get() = false
@@ -41,10 +41,12 @@ interface TagType<T : Tag> {
      * if required, using the given depth to keep track of how many levels deep
      * in a recursive load we are.
      *
-     * @param input the input to read the tag from
-     * @param depth the current depth of a recursive read
-     * @return the loaded tag
-     * @throws IOException if an I/O error occurs
+     * @param input The input to read the tag from.
+     * @param depth The current depth of a recursive read.
+     *
+     * @return The loaded tag.
+     *
+     * @throws IOException If an I/O error occurs.
      */
     @Throws(IOException::class)
     fun load(input: DataInput, depth: Int): T
@@ -53,10 +55,12 @@ interface TagType<T : Tag> {
      * Loads a tag of this type from the given input data and calls the
      * corresponding visit method on the given visitor with the loaded data.
      *
-     * @param input the input to read the tag from
-     * @param visitor the visitor to pass the loaded data to
-     * @return the result of the visit
-     * @throws IOException if an I/O error occurs
+     * @param input The input to read the tag from.
+     * @param visitor The visitor to pass the loaded data to.
+     *
+     * @return The result of the visit.
+     *
+     * @throws IOException If an I/O error occurs.
      */
     @Throws(IOException::class)
     fun parse(input: DataInput, visitor: StreamingTagVisitor): StreamingTagVisitor.ValueResult
@@ -65,17 +69,17 @@ interface TagType<T : Tag> {
      * Loads a tag of this type from the given input data and uses the visitor
      * to visit the data as a root entry.
      *
-     *
      * The semantics vary based on the result of [StreamingTagVisitor.visitRootEntry]:
      *
-     *  * If the result is [StreamingTagVisitor.ValueResult.CONTINUE], we call [.parse].
+     *  * If the result is [StreamingTagVisitor.ValueResult.CONTINUE], we call [parse].
      *  * If the result is [StreamingTagVisitor.ValueResult.HALT], we stop visiting.
-     *  * If the result is [StreamingTagVisitor.ValueResult.BREAK], we call [.skip].
+     *  * If the result is [StreamingTagVisitor.ValueResult.BREAK], we call [skip].
      *
      *
-     * @param input the input to read the tag from
-     * @param visitor the visitor to visit
-     * @throws IOException if an I/O error occurs
+     * @param input The input to read the tag from.
+     * @param visitor The visitor to visit.
+     *
+     * @throws IOException If an I/O error occurs.
      */
     @Throws(IOException::class)
     fun parseRoot(input: DataInput, visitor: StreamingTagVisitor) {
@@ -89,9 +93,10 @@ interface TagType<T : Tag> {
     /**
      * Skips the given amount of bytes in the given input.
      *
-     * @param input the input to skip bytes in
-     * @param bytes the amount of bytes to skip
-     * @throws IOException if an I/O error occurs
+     * @param input The input to skip bytes in.
+     * @param bytes The amount of bytes to skip.
+     *
+     * @throws IOException If an I/O error occurs.
      */
     @Throws(IOException::class)
     fun skip(input: DataInput, bytes: Int)
@@ -99,8 +104,9 @@ interface TagType<T : Tag> {
     /**
      * Skips the one byte in the given input.
      *
-     * @param input the input to skip bytes in
-     * @throws IOException if an I/O error occurs
+     * @param input The input to skip bytes in.
+     *
+     * @throws IOException If an I/O error occurs.
      */
     @Throws(IOException::class)
     fun skip(input: DataInput)
@@ -108,17 +114,17 @@ interface TagType<T : Tag> {
     /**
      * A specialized tag type with a statically known size in bytes.
      *
-     *
      * This is used for value types, where their size is always known.
      * For example, we always know that a long value will be 8 bytes.
      *
-     * @param <T> the type of the tag
-    </T> */
+     * @param T The type of the tag.
+     */
     interface StaticSize<T : Tag> : TagType<T> {
+
         /**
          * Gets the statically known size in bytes.
          *
-         * @return the size
+         * @return The size.
          */
         val size: Int
 
@@ -131,35 +137,40 @@ interface TagType<T : Tag> {
         override fun skip(input: DataInput) {
             input.skipBytes(size)
         }
+
     }
 
     /**
      * A specialized tag type with a dynamic size.
      *
-     *
      * This is used for non-value types and string, where their size is
      * dependent on the value itself. For example, an array could be 5 elements
      * or 50 elements long.
      *
-     * @param <T> the type of the tag
-    </T> */
+     * @param T The type of the tag.
+     */
     interface VariableSize<T : Tag> : TagType<T> {
+
         @Throws(IOException::class)
         override fun skip(input: DataInput, bytes: Int) {
-            for (i in 0 until bytes) {
+            repeat(bytes) {
                 skip(input)
             }
         }
+
     }
 
     companion object {
+
         /**
          * Creates a new tag type that is invalid, used for when a tag ID with no
          * actual representation is read.
          *
-         * @param id the invalid tag ID
-         * @return a new invalid tag type
+         * @param id The invalid tag ID.
+         *
+         * @return A new invalid tag type.
          */
+        @JvmStatic
         fun createInvalid(id: Int): TagType<EndTag> {
             return object : TagType<EndTag> {
 
@@ -195,5 +206,6 @@ interface TagType<T : Tag> {
                 }
             }
         }
+
     }
 }

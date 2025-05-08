@@ -35,6 +35,7 @@ class EndTag private constructor() : ScopedTag<EndTag> {
     }
 
     companion object {
+
         /**
          * The singleton instance that represents an end tag.
          */
@@ -42,7 +43,6 @@ class EndTag private constructor() : ScopedTag<EndTag> {
 
         /**
          * The ID of this type of tag.
-         *
          *
          * Used for [CollectionTag.elementType] and in the serialized
          * binary form.
@@ -77,5 +77,7 @@ class EndTag private constructor() : ScopedTag<EndTag> {
                 // Will never be anything to skip.
             }
         }
+
     }
+
 }

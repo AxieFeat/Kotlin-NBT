@@ -25,8 +25,7 @@ internal data class IntArrayTagImpl(
     override val size: Int
         get() = data.size
 
-    override val empty: Boolean
-        get() = data.isEmpty()
+    override fun isEmpty(): Boolean = data.isEmpty()
 
     override val elementType: Int = IntTag.ID
 

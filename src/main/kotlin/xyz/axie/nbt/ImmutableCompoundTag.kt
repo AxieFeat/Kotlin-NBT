@@ -4,7 +4,6 @@ import xyz.axie.nbt.CompoundTag.Companion.EMPTY
 import xyz.axie.nbt.impl.ImmutableCompoundTagImpl
 import org.pcollections.OrderedPMap
 
-
 /**
  * An immutable compound tag.
  */
@@ -18,12 +17,15 @@ interface ImmutableCompoundTag : ScopedCompoundTag<ImmutableCompoundTag> {
     interface Builder : ScopedCompoundTag.Builder<Builder>
 
     companion object {
+
         /**
          * Creates a new immutable compound tag from the given data.
          *
-         * @param data the data
-         * @return a new immutable compound tag
+         * @param data The data.
+         *
+         * @return A new immutable compound tag.
          */
+        @JvmStatic
         fun of(data: Map<out String, Tag>): ImmutableCompoundTag {
             // Optimization: If the data is empty, we can just return the empty compound.
             if (data.isEmpty()) return EMPTY
@@ -33,10 +35,13 @@ interface ImmutableCompoundTag : ScopedCompoundTag<ImmutableCompoundTag> {
         /**
          * Creates a new builder for building an immutable compound tag.
          *
-         * @return a new builder
+         * @return A new builder.
          */
+        @JvmStatic
         fun builder(): Builder {
             return ImmutableCompoundTagImpl.Builder()
         }
+
     }
+
 }

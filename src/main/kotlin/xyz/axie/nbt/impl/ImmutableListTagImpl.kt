@@ -11,20 +11,16 @@ internal data class ImmutableListTagImpl(
     override val elementType: Int
 ) : AbstractListTag<ImmutableListTag>(), ImmutableListTag {
 
-    override fun elementType(): Int {
-        return elementType
-    }
-
     override fun add(tag: Tag): ImmutableListTag {
-        if (!canAdd(tag)) addUnsupported(tag.id, elementType())
-        return ImmutableListTagImpl(data.plus(tag), elementType())
+        if (!canAdd(tag)) addUnsupported(tag.id, elementType)
+        return ImmutableListTagImpl(data.plus(tag), elementType)
     }
 
-    override fun addAll(tags: Collection<Tag?>): ImmutableListTag {
+    override fun addAll(tags: Collection<Tag>): ImmutableListTag {
         for (tag in tags) {
-            if (!canAdd(tag!!)) addUnsupported(tag.id, elementType())
+            if (!canAdd(tag)) addUnsupported(tag.id, elementType)
         }
-        return ImmutableListTagImpl(data.plusAll(tags), elementType())
+        return ImmutableListTagImpl(data.plusAll(tags), elementType)
     }
 
     override fun tryAdd(index: Int, tag: Tag): Boolean {
@@ -41,23 +37,23 @@ internal data class ImmutableListTagImpl(
         // Optimization: If we only have one element, we can only remove that element, which will result in an empty list,
         // therefore we return the empty list.
         if (data.isEmpty() || (data.size == 1 && index == 0)) return ListTag.EMPTY
-        return ImmutableListTagImpl(data.minus(index), elementType())
+        return ImmutableListTagImpl(data.minus(index), elementType)
     }
 
     override fun remove(tag: Tag): ImmutableListTag {
         // Optimization: If we only have one element, we can only remove that element, which will result in an empty list,
         // therefore we return the empty list.
         if (data.isEmpty() || (data.size == 1 && tag == data[0])) return ListTag.EMPTY
-        return ImmutableListTagImpl(data.minus(tag), elementType())
+        return ImmutableListTagImpl(data.minus(tag), elementType)
     }
 
-    override fun removeAll(tags: Collection<Tag?>): ImmutableListTag {
+    override fun removeAll(tags: Collection<Tag>): ImmutableListTag {
         // Optimization: We can't remove any data from an empty list.
         if (data.isEmpty()) return ListTag.EMPTY
-        return ImmutableListTagImpl(data.minusAll(tags), elementType())
+        return ImmutableListTagImpl(data.minusAll(tags), elementType)
     }
 
-    override fun removeIf(predicate: Predicate<in Tag?>): ImmutableListTag {
+    override fun removeIf(predicate: Predicate<in Tag>): ImmutableListTag {
         if (data.isEmpty()) return ListTag.EMPTY
         var result: PSequence<Tag> = data
         for (i in 0 until data.size) {
@@ -67,11 +63,11 @@ internal data class ImmutableListTagImpl(
         if (result.size == data.size) return this
         // Optimization: If the result is empty, we removed everything, so just return the empty list tag.
         if (result.isEmpty()) return ListTag.EMPTY
-        return ImmutableListTagImpl(result, elementType())
+        return ImmutableListTagImpl(result, elementType)
     }
 
     override fun set(index: Int, tag: Tag): ImmutableListTag {
-        return ImmutableListTagImpl(data.with(index, tag), elementType())
+        return ImmutableListTagImpl(data.with(index, tag), elementType)
     }
 
     override fun copy(): ImmutableListTag {
@@ -79,11 +75,11 @@ internal data class ImmutableListTagImpl(
     }
 
     override fun toBuilder(): ImmutableListTag.Builder {
-        return Builder(ArrayList<Tag>(data), elementType())
+        return Builder(ArrayList<Tag>(data), elementType)
     }
 
     override fun asMutable(): MutableListTag {
-        return MutableListTagImpl(ArrayList(data), elementType())
+        return MutableListTagImpl(ArrayList(data), elementType)
     }
 
     override fun asImmutable(): ImmutableListTag {

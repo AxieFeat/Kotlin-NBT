@@ -5,10 +5,12 @@ package xyz.axie.nbt.util
  * shorts.
  */
 fun interface ShortConsumer {
+
     /**
      * Performs this operation on the given argument.
      *
-     * @param value the input argument
+     * @param value The input argument.
      */
     fun accept(value: Short)
+
 }

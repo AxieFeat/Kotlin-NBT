@@ -27,8 +27,7 @@ internal data class ByteArrayTagImpl(
 
     override val elementType: Int = ByteTag.ID
 
-    override val empty: Boolean
-        get() = data.isEmpty()
+    override fun isEmpty(): Boolean = data.isEmpty()
 
     override fun get(index: Int): ByteTag {
         return ByteTag.of(data[index])

@@ -27,8 +27,7 @@ internal data class LongArrayTagImpl(
     override val size: Int
         get() = data.size
 
-    override val empty: Boolean
-        get() = data.isEmpty()
+    override fun isEmpty(): Boolean = data.isEmpty()
 
     override fun get(index: Int): LongTag {
         return LongTag.of(data[index])
@@ -74,7 +73,7 @@ internal data class LongArrayTagImpl(
     }
 
     override fun stream(): Stream<LongTag> {
-        return Arrays.stream(data).mapToObj<LongTag>(LongTag.Companion::of)
+        return Arrays.stream(data).mapToObj(LongTag.Companion::of)
     }
 
     @Throws(IOException::class)

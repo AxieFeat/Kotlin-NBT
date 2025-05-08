@@ -11,7 +11,7 @@ interface ByteArrayTag : ListCollectionTag<ByteTag>, ScopedTag<ByteArrayTag> {
     /**
      * Gets the backing data for this tag.
      *
-     * @return the backing data
+     * @return The backing data.
      */
     var data: ByteArray
 
@@ -20,8 +20,9 @@ interface ByteArrayTag : ListCollectionTag<ByteTag>, ScopedTag<ByteArrayTag> {
     /**
      * Sets the element at the given index to the given value.
      *
-     * @param index the index
-     * @param value the value
+     * @param index The index.
+     *
+     * @param value The value.
      */
     fun set(index: Int, value: Byte)
 
@@ -30,45 +31,46 @@ interface ByteArrayTag : ListCollectionTag<ByteTag>, ScopedTag<ByteArrayTag> {
     /**
      * Adds the given value to this tag.
      *
-     * @param value the value to add
+     * @param value The value to add.
      */
     fun add(value: Byte)
 
     /**
      * Adds the given value to this tag at the given index.
      *
-     * @param index the index
-     * @param value the value to add
+     * @param index The index.
+     *
+     * @param value The value to add.
      */
     fun add(index: Int, value: Byte)
 
     override fun add(index: Int, element: ByteTag)
-
-    //fun remove(index: Int): ByteTag
 
     override fun clear()
 
     /**
      * Performs the given action on every element in this tag.
      *
-     * @param action the action to perform
+     * @param action The action to perform.
      */
     fun forEachByte(action: ByteConsumer)
 
     companion object {
+
         /**
          * Creates a new byte array tag with the given data.
          *
-         * @param data the data
-         * @return a new byte array tag
+         * @param data The data.
+         *
+         * @return A new byte array tag.
          */
+        @JvmStatic
         fun of(data: ByteArray): ByteArrayTag {
             return ByteArrayTagImpl(data)
         }
 
         /**
          * The ID of this type of tag.
-         *
          *
          * Used for [CollectionTag.elementType] and in the serialized
          * binary form.
@@ -78,6 +80,8 @@ interface ByteArrayTag : ListCollectionTag<ByteTag>, ScopedTag<ByteArrayTag> {
         /**
          * The tag type for this tag.
          */
+        @JvmStatic
         val TYPE: TagType<ByteArrayTag> = ByteArrayTagImpl.createType()
+
     }
 }

@@ -30,8 +30,7 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
     override val size: Int
         get() = data.size
 
-    override val empty: Boolean
-        get() = data.isEmpty()
+    override fun isEmpty(): Boolean = data.isEmpty()
 
     override fun contains(element: Tag): Boolean {
         return data.contains(element)
@@ -265,7 +264,7 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
     @Throws(IOException::class)
     override fun write(output: DataOutput) {
         val data: List<Tag> = data
-        output.writeByte(elementType())
+        output.writeByte(elementType)
         output.writeInt(data.size)
         for (element in data) {
             element.write(output)
@@ -294,7 +293,7 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
                     when (visitor.visitElement(value.type(), i)) {
                         StreamingTagVisitor.EntryResult.HALT -> return StreamingTagVisitor.ValueResult.HALT
                         StreamingTagVisitor.EntryResult.BREAK -> return visitor.visitContainerEnd()
-                        StreamingTagVisitor.EntryResult.SKIP -> ++i
+                        StreamingTagVisitor.EntryResult.SKIP -> i++
                         else -> {
                             when (value.visit(visitor)) {
                                 StreamingTagVisitor.ValueResult.HALT -> {
@@ -325,8 +324,8 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
 
     protected fun canAdd(tag: Tag): Boolean {
         if (tag.id == EndTag.ID) return false
-        if (elementType() == EndTag.ID) return true
-        return elementType() == tag.id
+        if (elementType == EndTag.ID) return true
+        return elementType == tag.id
     }
 
     internal abstract class Builder<B : Builder<B, T>, T : ListTag> protected constructor(
@@ -419,7 +418,7 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
 
                                     StreamingTagVisitor.EntryResult.SKIP -> {
                                         type.skip(input)
-                                        ++i
+                                        i++
                                     }
 
                                     else -> {
@@ -434,7 +433,7 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
                                                 return visitor.visitContainerEnd()
                                             }
 
-                                            else -> ++i
+                                            else -> i++
                                         }
                                     }
                                 }

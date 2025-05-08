@@ -64,20 +64,20 @@ internal data class IntTagImpl(
     private object Cache {
         const val LOWER_LIMIT: Int = -128
         const val UPPER_LIMIT: Int = 1024
-        val CACHE: Array<IntTag?> = arrayOfNulls(xyz.axie.nbt.impl.IntTagImpl.Cache.UPPER_LIMIT - xyz.axie.nbt.impl.IntTagImpl.Cache.LOWER_LIMIT + 1)
+        val CACHE: Array<IntTag?> = arrayOfNulls(UPPER_LIMIT - LOWER_LIMIT + 1)
 
         init {
-            for (i in xyz.axie.nbt.impl.IntTagImpl.Cache.CACHE.indices) {
-                xyz.axie.nbt.impl.IntTagImpl.Cache.CACHE[i] =
-                    xyz.axie.nbt.impl.IntTagImpl(i + xyz.axie.nbt.impl.IntTagImpl.Cache.LOWER_LIMIT)
+            for (i in CACHE.indices) {
+                CACHE[i] =
+                    IntTagImpl(i + LOWER_LIMIT)
             }
         }
     }
 
     companion object {
         fun of(value: Int): IntTag {
-            if (value >= xyz.axie.nbt.impl.IntTagImpl.Cache.LOWER_LIMIT && value <= xyz.axie.nbt.impl.IntTagImpl.Cache.UPPER_LIMIT) return xyz.axie.nbt.impl.IntTagImpl.Cache.CACHE[value - xyz.axie.nbt.impl.IntTagImpl.Cache.LOWER_LIMIT]!!
-            return xyz.axie.nbt.impl.IntTagImpl(value)
+            if (value >= Cache.LOWER_LIMIT && value <= Cache.UPPER_LIMIT) return Cache.CACHE[value - Cache.LOWER_LIMIT]!!
+            return IntTagImpl(value)
         }
 
         fun createType(): TagType<IntTag> {
@@ -94,7 +94,7 @@ internal data class IntTagImpl(
 
                 @Throws(IOException::class)
                 override fun load(input: DataInput, depth: Int): IntTag {
-                    return xyz.axie.nbt.impl.IntTagImpl.Companion.of(input.readInt())
+                    return of(input.readInt())
                 }
 
                 @Throws(IOException::class)

@@ -28,8 +28,7 @@ internal abstract class AbstractCompoundTag<T : CompoundTag> : CompoundTag {
     override val size: Int
         get() = data.size
 
-    override val isEmpty: Boolean
-        get() = data.isEmpty()
+    override fun isEmpty(): Boolean = data.isEmpty()
 
     override fun keySet(): Set<String> {
         return data.keys
@@ -49,12 +48,12 @@ internal abstract class AbstractCompoundTag<T : CompoundTag> : CompoundTag {
         return data.containsKey(name)
     }
 
-    override fun contains(name: String, typeId: Int): Boolean {
-        val type = type(name)
+    override fun contains(name: String, type: Int): Boolean {
+        val typeId = type(name)
         if (type == typeId) return true
-        if (typeId != 99) return false
+        if (type != 99) return false
 
-        return type == ByteTag.ID || type == ShortTag.ID || type == IntTag.ID || type == LongTag.ID || type == FloatTag.ID || type == DoubleTag.ID
+        return typeId == ByteTag.ID || typeId == ShortTag.ID || typeId == IntTag.ID || typeId == LongTag.ID || typeId == FloatTag.ID || typeId == DoubleTag.ID
     }
 
     override fun get(name: String): Tag? {
@@ -116,7 +115,7 @@ internal abstract class AbstractCompoundTag<T : CompoundTag> : CompoundTag {
     override fun getList(name: String, elementType: Int, defaultValue: ListTag): ListTag {
         if (type(name) != ListTag.ID) return defaultValue
         val tag: ListTag = data[name] as ListTag
-        return if (!tag.empty && tag.elementType() != elementType) defaultValue else tag
+        return if (!tag.isEmpty() && tag.elementType != elementType) defaultValue else tag
     }
 
     override fun getCompound(name: String, defaultValue: CompoundTag): CompoundTag {

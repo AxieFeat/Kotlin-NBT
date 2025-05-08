@@ -17,14 +17,17 @@ interface ImmutableListTag : ScopedListTag<ImmutableListTag> {
     interface Builder : ScopedListTag.Builder<Builder>
 
     companion object {
+
         /**
          * Creates a new immutable list tag from the given data with the given
          * element type.
          *
-         * @param data the data
-         * @param elementType the element type
-         * @return a new immutable list tag
+         * @param data The data.
+         * @param elementType The element type.
+         *
+         * @return A new immutable list tag.
          */
+        @JvmStatic
         fun of(data: List<Tag?>, elementType: Int): ImmutableListTag {
             // Optimization: For empty data, the element type is always EndTag, so we can just return the empty list.
             if (data.isEmpty()) return EMPTY
@@ -36,11 +39,14 @@ interface ImmutableListTag : ScopedListTag<ImmutableListTag> {
          *
          * The element type will be determined as elements are added.
          *
-         * @return a new builder
+         * @return A new builder.
          */
+        @JvmStatic
         @JvmOverloads
         fun builder(elementType: Int = EndTag.ID): Builder {
             return ImmutableListTagImpl.Builder(elementType)
         }
+
     }
+
 }

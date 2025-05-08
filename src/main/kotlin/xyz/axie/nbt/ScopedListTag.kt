@@ -7,15 +7,15 @@ interface ScopedListTag<T : ScopedListTag<T>> : ListTag {
 
     override fun add(tag: Tag): T
 
-    override fun addAll(tags: Collection<Tag?>): T
+    override fun addAll(tags: Collection<Tag>): T
 
     override fun remove(index: Int): T
 
     override fun remove(tag: Tag): T
 
-    override fun removeAll(tags: Collection<Tag?>): T
+    override fun removeAll(tags: Collection<Tag>): T
 
-    override fun removeIf(predicate: Predicate<in Tag?>): T
+    override fun removeIf(predicate: Predicate<in Tag>): T
 
     override fun set(index: Int, tag: Tag): T
 

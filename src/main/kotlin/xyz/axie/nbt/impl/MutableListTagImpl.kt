@@ -11,10 +11,6 @@ internal data class MutableListTagImpl(
     override var elementType: Int
 ) : AbstractListTag<MutableListTag>(), MutableListTag {
 
-    override fun elementType(): Int {
-        return elementType
-    }
-
     override fun add(tag: Tag): MutableListTag {
         if (tag.id == EndTag.ID) throw UnsupportedOperationException("Cannot add end tag to list!")
 
@@ -23,9 +19,9 @@ internal data class MutableListTagImpl(
         return this
     }
 
-    override fun addAll(tags: Collection<Tag?>): MutableListTag {
+    override fun addAll(tags: Collection<Tag>): MutableListTag {
         for (tag in tags) {
-            if (!canAdd(tag!!)) addUnsupported(tag.id, elementType())
+            if (!canAdd(tag)) addUnsupported(tag.id, elementType)
             data.add(tag)
         }
         return this
@@ -54,12 +50,12 @@ internal data class MutableListTagImpl(
         return this
     }
 
-    override fun removeAll(tags: Collection<Tag?>): MutableListTag {
-        data.removeAll(tags)
+    override fun removeAll(tags: Collection<Tag>): MutableListTag {
+        data.removeAll(tags.toSet())
         return this
     }
 
-    override fun removeIf(predicate: Predicate<in Tag?>): MutableListTag {
+    override fun removeIf(predicate: Predicate<in Tag>): MutableListTag {
         data.removeIf(predicate)
         return this
     }

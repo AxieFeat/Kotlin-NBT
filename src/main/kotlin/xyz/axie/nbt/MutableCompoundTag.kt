@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Contract
  * A mutable compound tag.
  */
 interface MutableCompoundTag : ScopedCompoundTag<MutableCompoundTag> {
+
     /**
      * Clears this mutable compound tag, erasing all elements stored in it.
      */
@@ -20,12 +21,15 @@ interface MutableCompoundTag : ScopedCompoundTag<MutableCompoundTag> {
     interface Builder : ScopedCompoundTag.Builder<Builder>
 
     companion object {
+
         /**
          * Creates a new mutable compound tag from the given data.
          *
-         * @param data the data
-         * @return a new mutable compound tag
+         * @param data The data.
+         *
+         * @return A new mutable compound tag.
          */
+        @JvmStatic
         @Contract(value = "_ -> new", pure = true)
         fun of(data: Map<out String, Tag>): MutableCompoundTag {
             return MutableCompoundTagImpl(data.toMutableMap())
@@ -34,8 +38,9 @@ interface MutableCompoundTag : ScopedCompoundTag<MutableCompoundTag> {
         /**
          * Creates a new empty mutable compound tag.
          *
-         * @return a new empty mutable compound tag
+         * @return A new empty mutable compound tag.
          */
+        @JvmStatic
         @Contract(value = "-> new", pure = true)
         fun empty(): MutableCompoundTag {
             return MutableCompoundTagImpl(LinkedHashMap())
@@ -44,11 +49,14 @@ interface MutableCompoundTag : ScopedCompoundTag<MutableCompoundTag> {
         /**
          * Creates a new builder for building a mutable compound tag.
          *
-         * @return a new builder
+         * @return A new builder.
          */
+        @JvmStatic
         @Contract(value = "-> new", pure = true)
         fun builder(): Builder {
             return MutableCompoundTagImpl.Builder()
         }
+
     }
+
 }

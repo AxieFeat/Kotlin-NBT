@@ -5,11 +5,13 @@ package xyz.axie.nbt.util
  * an object and a short.
  */
 fun interface ObjShortConsumer<T> {
+
     /**
      * Performs this operation on the given arguments.
      *
-     * @param t the input object
-     * @param s the input short
+     * @param t The input object.
+     * @param s The input short.
      */
     fun accept(t: T, s: Short)
+
 }

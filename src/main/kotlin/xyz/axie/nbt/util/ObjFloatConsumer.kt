@@ -5,11 +5,13 @@ package xyz.axie.nbt.util
  * an object and a float.
  */
 fun interface ObjFloatConsumer<T> {
+
     /**
      * Performs this operation on the given arguments.
      *
-     * @param t the input object
-     * @param f the input float
+     * @param t The input object.
+     * @param f The input float.
      */
     fun accept(t: T, f: Float)
+
 }

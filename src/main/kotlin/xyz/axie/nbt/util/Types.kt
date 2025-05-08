@@ -27,9 +27,11 @@ object Types {
     /**
      * Gets the [TagType] for the given integer type ID.
      *
-     * @param type the type ID
-     * @return the corresponding tag type
-     * @throws IllegalArgumentException if the provided type ID is not valid
+     * @param type The type ID.
+     *
+     * @return The corresponding tag type.
+     *
+     * @throws IllegalArgumentException If the provided type ID is not valid.
      */
     fun of(type: Int): TagType<out Tag> {
         return if (type >= 0 && type < TYPES.size) TYPES[type] else TagType.createInvalid(type)

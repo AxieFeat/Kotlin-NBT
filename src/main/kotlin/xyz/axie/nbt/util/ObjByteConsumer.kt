@@ -5,11 +5,13 @@ package xyz.axie.nbt.util
  * an object and a byte.
  */
 fun interface ObjByteConsumer<T> {
+
     /**
      * Performs this operation on the given arguments.
      *
-     * @param t the input object
-     * @param b the input byte
+     * @param t The input object.
+     * @param b The input byte.
      */
     fun accept(t: T, b: Byte)
+
 }
