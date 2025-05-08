@@ -3,8 +3,8 @@ plugins {
     id("maven-publish")
 }
 
-group = "xyz.arial.nbt"
-version = "1.0"
+group = "xyz.axie.nbt"
+version = "1.1"
 
 repositories {
     mavenCentral()
@@ -20,7 +20,7 @@ publishing {
         create<MavenPublication>("release") {
             from(components["kotlin"])
 
-            groupId = "xyz.arial.nbt"
+            groupId = "xyz.axie.nbt"
             artifactId = project.name
 
             pom {
