@@ -1,5 +1,6 @@
 package xyz.axie.nbt
 
+import java.util.function.Consumer
 import java.util.function.Predicate
 
 interface ScopedListTag<T : ScopedListTag<T>> : ListTag {
@@ -50,6 +51,12 @@ interface ScopedListTag<T : ScopedListTag<T>> : ListTag {
 
     interface Builder<B : Builder<B>> : ListTag.Builder {
         override fun add(tag: Tag): B
+
+        override fun addCompound(builder: Consumer<CompoundTag.Builder>): B {
+            val compound = ImmutableCompoundTag.builder()
+            builder.accept(compound)
+            return add(compound.build())
+        }
 
         override fun addBoolean(value: Boolean): B {
             return add(ByteTag.of(value))

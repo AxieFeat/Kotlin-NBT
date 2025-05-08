@@ -1,5 +1,7 @@
 package xyz.axie.nbt
 
+import org.pcollections.HashTreePMap
+import xyz.axie.nbt.*
 import xyz.axie.nbt.CompoundTag.Companion.ID
 import xyz.axie.nbt.CompoundTag.Companion.TYPE
 import xyz.axie.nbt.impl.ImmutableCompoundTagImpl
@@ -10,8 +12,6 @@ import xyz.axie.nbt.util.ObjShortConsumer
 import xyz.axie.nbt.util.Types
 import xyz.axie.nbt.visitor.StreamingTagVisitor
 import xyz.axie.nbt.visitor.TagVisitor
-import org.pcollections.HashTreePMap
-import xyz.axie.nbt.*
 import java.io.DataInput
 import java.io.DataOutput
 import java.io.IOException

@@ -9,6 +9,7 @@ import xyz.axie.nbt.util.FloatConsumer
 import xyz.axie.nbt.util.ShortConsumer
 import org.jetbrains.annotations.Contract
 import org.pcollections.TreePVector
+import xyz.axie.nbt.CompoundTag.Builder
 import java.util.function.*
 
 /**
@@ -677,6 +678,15 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
          */
         @Contract(value = "_ -> this", mutates = "this")
         fun add(tag: Tag): Builder
+
+        /**
+         * Adds the given compound tag to this builder.
+         *
+         * @param builder the compound tag to add
+         * @return this builder
+         */
+        @Contract(value = "_ -> this", mutates = "this")
+        fun addCompound(builder: Consumer<CompoundTag.Builder>): Builder
 
         /**
          * Adds the given boolean value to this builder.
