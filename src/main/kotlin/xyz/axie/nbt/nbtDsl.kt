@@ -49,3 +49,36 @@ inline fun list(builder: ListTag.Builder.() -> Unit): ListTag = ImmutableListTag
 @NBTDsl
 @JvmSynthetic
 inline fun buildList(builder: ListTag.Builder.() -> Unit): ListTag.Builder = ImmutableListTag.builder().apply(builder)
+
+/**
+ * Creates a new list tag builder and add it to compound tag builder.
+ *
+ * @param builder The builder.
+ *
+ * @return This instance of compound tag builder.
+ */
+@JvmSynthetic
+inline fun CompoundTag.Builder.list(name: String, builder: ListTag.Builder.() -> Unit): CompoundTag.Builder =
+    put(name, list(builder))
+
+/**
+ * Adds new compound tag to list.
+ *
+ * @param builder The builder.
+ *
+ * @return This instance of list builder.
+ */
+@JvmSynthetic
+inline fun ListTag.Builder.compound(builder: CompoundTag.Builder.() -> Unit): ListTag.Builder =
+    add(xyz.axie.nbt.compound(builder))
+
+/**
+ * Creates a new compound tag builder and add it to compound tag builder.
+ *
+ * @param builder The builder.
+ *
+ * @return This instance of compound tag builder.
+ */
+@JvmSynthetic
+inline fun CompoundTag.Builder.compound(name: String, builder: CompoundTag.Builder.() -> Unit): CompoundTag.Builder =
+    put(name, compound(builder))

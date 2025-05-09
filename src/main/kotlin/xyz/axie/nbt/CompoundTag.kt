@@ -924,18 +924,6 @@ interface CompoundTag : ScopedTag<CompoundTag> {
         fun putList(name: String, elementType: Int, elements: Collection<Tag>): Builder
 
         /**
-         * Sets the value of the tag with the given name to the result of
-         * applying the given builder function to a new builder.
-         *
-         * @param name The name.
-         * @param builder The builder.
-         *
-         * @return This builder.
-         */
-        @Contract(value = "_, _ -> this", mutates = "this")
-        fun putCompound(name: String, builder: Consumer<Builder>): Builder
-
-        /**
          * Removes the value for the given key from this builder.
          *
          * @param key The key to remove.

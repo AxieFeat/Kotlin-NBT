@@ -33,7 +33,9 @@ object Types {
      *
      * @throws IllegalArgumentException If the provided type ID is not valid.
      */
+    @JvmStatic
     fun of(type: Int): TagType<out Tag> {
         return if (type >= 0 && type < TYPES.size) TYPES[type] else TagType.createInvalid(type)
     }
+
 }

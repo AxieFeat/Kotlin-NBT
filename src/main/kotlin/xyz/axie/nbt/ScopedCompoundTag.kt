@@ -112,12 +112,6 @@ interface ScopedCompoundTag<T : ScopedCompoundTag<T>> : CompoundTag {
             return this.put(name, ImmutableListTag.of(TreePVector.from(elements), elementType))
         }
 
-        override fun putCompound(name: String, builder: Consumer<CompoundTag.Builder>): B {
-            val compound = ImmutableCompoundTag.builder()
-            builder.accept(compound)
-            return this.put(name, compound.build())
-        }
-
         override fun remove(key: String): B
 
         override fun from(other: CompoundTag.Builder): B
