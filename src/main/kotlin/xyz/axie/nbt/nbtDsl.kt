@@ -51,11 +51,11 @@ inline fun list(builder: ListTag.Builder.() -> Unit): ListTag = ImmutableListTag
 inline fun buildList(builder: ListTag.Builder.() -> Unit): ListTag.Builder = ImmutableListTag.builder().apply(builder)
 
 /**
- * Creates a new list tag builder and add it to compound tag builder.
+ * Creates a new list tag builder and add it to the compound tag builder.
  *
  * @param builder The builder.
  *
- * @return This instance of compound tag builder.
+ * @return This instance of a compound tag builder.
  */
 @JvmSynthetic
 inline fun CompoundTag.Builder.list(name: String, builder: ListTag.Builder.() -> Unit): CompoundTag.Builder =
@@ -77,7 +77,7 @@ inline fun ListTag.Builder.compound(builder: CompoundTag.Builder.() -> Unit): Li
  *
  * @param builder The builder.
  *
- * @return This instance of compound tag builder.
+ * @return This instance of a compound tag builder.
  */
 @JvmSynthetic
 inline fun CompoundTag.Builder.compound(name: String, builder: CompoundTag.Builder.() -> Unit): CompoundTag.Builder =

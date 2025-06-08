@@ -91,10 +91,10 @@ interface TagType<T : Tag> {
     }
 
     /**
-     * Skips the given amount of bytes in the given input.
+     * Skips the given number of bytes in the given input.
      *
      * @param input The input to skip bytes in.
-     * @param bytes The amount of bytes to skip.
+     * @param bytes The number of bytes to skip.
      *
      * @throws IOException If an I/O error occurs.
      */

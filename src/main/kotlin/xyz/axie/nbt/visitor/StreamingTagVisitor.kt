@@ -187,7 +187,7 @@ interface StreamingTagVisitor {
          *
          * For example, if we have a compound that contains a list, and
          * visiting one of the list elements returns this, we will skip all
-         * of the list elements, but not all of the elements in the parent
+         * the list elements, but not all the elements in the parent
          * compound.
          */
         BREAK,

@@ -57,7 +57,7 @@ interface ByteTag : NumberTag, ScopedTag<ByteTag> {
         /**
          * Gets the byte tag representing the given value.
          *
-         * The boolean here will be converted to its byte representation, i.e.
+         * The boolean here will be converted to its byte representation, i.e.,
          * ONE for a true value, and ZERO for a false one.
          *
          * @param value The value.

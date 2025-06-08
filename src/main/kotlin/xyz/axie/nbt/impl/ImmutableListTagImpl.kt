@@ -35,14 +35,14 @@ internal data class ImmutableListTagImpl(
 
     override fun remove(index: Int): ImmutableListTag {
         // Optimization: If we only have one element, we can only remove that element, which will result in an empty list,
-        // therefore we return the empty list.
+        // therefore, we return the empty list.
         if (data.isEmpty() || (data.size == 1 && index == 0)) return ListTag.EMPTY
         return ImmutableListTagImpl(data.minus(index), elementType)
     }
 
     override fun remove(tag: Tag): ImmutableListTag {
         // Optimization: If we only have one element, we can only remove that element, which will result in an empty list,
-        // therefore we return the empty list.
+        // therefore, we return the empty list.
         if (data.isEmpty() || (data.size == 1 && tag == data[0])) return ListTag.EMPTY
         return ImmutableListTagImpl(data.minus(tag), elementType)
     }
@@ -59,7 +59,7 @@ internal data class ImmutableListTagImpl(
         for (i in 0 until data.size) {
             if (predicate.test(data[i])) result = result.minus(i)
         }
-        // Optimization: If the sizes match, we removed nothing, so just return this tag.
+        // Optimization: If the sizes match, we removed nothing, so return this tag.
         if (result.size == data.size) return this
         // Optimization: If the result is empty, we removed everything, so just return the empty list tag.
         if (result.isEmpty()) return ListTag.EMPTY

@@ -1,7 +1,6 @@
 package xyz.axie.nbt
 
 import org.pcollections.HashTreePMap
-import xyz.axie.nbt.*
 import xyz.axie.nbt.CompoundTag.Companion.ID
 import xyz.axie.nbt.CompoundTag.Companion.TYPE
 import xyz.axie.nbt.impl.ImmutableCompoundTagImpl

@@ -33,7 +33,7 @@ internal object TagUtil {
     @Throws(IOException::class)
     @JvmStatic
     fun writeNamedTag(outputStream: OutputStream, name: String, value: Tag) {
-        val output = if (outputStream is DataOutputStream) outputStream else DataOutputStream(outputStream)
+        val output = outputStream as? DataOutputStream ?: DataOutputStream(outputStream)
         output.writeByte(value.id)
         if (value.id == EndTag.ID) return
         output.writeUTF(name)
@@ -48,6 +48,6 @@ internal object TagUtil {
     }
 
     private fun ensureDataInput(input: InputStream): DataInputStream {
-        return if (input is DataInputStream) input else DataInputStream(input)
+        return input as? DataInputStream ?: DataInputStream(input)
     }
 }

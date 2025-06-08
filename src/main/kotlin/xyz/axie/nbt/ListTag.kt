@@ -65,7 +65,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun get(index: Int): Tag
 
     /**
-     * Gets the boolean value at the given index, or returns the
+     * Gets the boolean value at the given index or returns the
      * default value if there is no boolean value at the given index.
      *
      * @param index The index.
@@ -76,7 +76,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getBoolean(index: Int, defaultValue: Boolean): Boolean
 
     /**
-     * Gets the boolean value at the given index, or returns false
+     * Gets the boolean value at the given index or returns false
      * if there is no boolean value at the given index.
      *
      * @param index The index.
@@ -88,7 +88,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the byte value at the given index, or returns the
+     * Gets the byte value at the given index or returns the
      * default value if there is no byte value at the given index.
      *
      * @param index The index.
@@ -99,7 +99,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getByte(index: Int, defaultValue: Byte): Byte
 
     /**
-     * Gets the byte value at the given index, or returns 0
+     * Gets the byte value at the given index or returns 0
      * if there is no byte value at the given index.
      *
      * @param index The index.
@@ -111,7 +111,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the short value at the given index, or returns the
+     * Gets the short value at the given index or returns the
      * default value if there is no short value at the given index.
      *
      * @param index The index.
@@ -122,7 +122,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getShort(index: Int, defaultValue: Short): Short
 
     /**
-     * Gets the short value at the given index, or returns 0
+     * Gets the short value at the given index or returns 0
      * if there is no short value at the given index.
      *
      * @param index The index.
@@ -134,7 +134,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the int value at the given index, or returns the
+     * Gets the int value at the given index or returns the
      * default value if there is no int value at the given index.
      *
      * @param index The index.
@@ -145,7 +145,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getInt(index: Int, defaultValue: Int): Int
 
     /**
-     * Gets the int value at the given index, or returns 0
+     * Gets the int value at the given index or returns 0
      * if there is no int value at the given index.
      *
      * @param index The index.
@@ -157,7 +157,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the long value at the given index, or returns the
+     * Gets the long value at the given index or returns the
      * default value if there is no long value at the given index.
      *
      * @param index The index.
@@ -168,7 +168,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getLong(index: Int, defaultValue: Long): Long
 
     /**
-     * Gets the long value at the given index, or returns 0
+     * Gets the long value at the given index or returns 0
      * if there is no long value at the given index.
      *
      * @param index The index.
@@ -180,7 +180,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the float value at the given index, or returns the
+     * Gets the float value at the given index or returns the
      * default value if there is no float value at the given index.
      *
      * @param index The index.
@@ -191,7 +191,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getFloat(index: Int, defaultValue: Float): Float
 
     /**
-     * Gets the float value at the given index, or returns 0
+     * Gets the float value at the given index or returns 0
      * if there is no float value at the given index.
      *
      * @param index The index.
@@ -203,7 +203,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the double value at the given index, or returns the
+     * Gets the double value at the given index or returns the
      * default value if there is no double value at the given index.
      *
      * @param index The index.
@@ -214,7 +214,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getDouble(index: Int, defaultValue: Double): Double
 
     /**
-     * Gets the double value at the given index, or returns 0
+     * Gets the double value at the given index or returns 0
      * if there is no double value at the given index.
      *
      * @param index The index.
@@ -226,7 +226,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the string value at the given index, or returns the
+     * Gets the string value at the given index or returns the
      * default value if there is no string value at the given index.
      *
      * @param index The index.
@@ -237,7 +237,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getString(index: Int, defaultValue: String): String
 
     /**
-     * Gets the string value at the given index, or returns an empty string
+     * Gets the string value at the given index or returns an empty string
      * if there is no string value at the given index.
      *
      * @param index The index.
@@ -249,7 +249,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the byte array value at the given index, or returns the
+     * Gets the byte array value at the given index or returns the
      * default value if there is no byte array value at the given index.
      *
      * @param index The index.
@@ -260,7 +260,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getByteArray(index: Int, defaultValue: ByteArray): ByteArray
 
     /**
-     * Gets the byte array value at the given index, or returns an empty byte array
+     * Gets the byte array value at the given index or returns an empty byte array
      * if there is no byte array value at the given index.
      *
      * @param index The index.
@@ -272,7 +272,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the int array value at the given index, or returns the
+     * Gets the int array value at the given index or returns the
      * default value if there is no int array value at the given index.
      *
      * @param index The index.
@@ -283,7 +283,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getIntArray(index: Int, defaultValue: IntArray): IntArray
 
     /**
-     * Gets the int array value at the given index, or returns an empty int array
+     * Gets the int array value at the given index or returns an empty int array
      * if there is no int array value at the given index.
      *
      * @param index The index.
@@ -295,7 +295,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the long array value at the given index, or returns the
+     * Gets the long array value at the given index or returns the
      * default value if there is no long array value at the given index.
      *
      * @param index The index.
@@ -306,7 +306,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getLongArray(index: Int, defaultValue: LongArray): LongArray
 
     /**
-     * Gets the long array value at the given index, or returns an empty long array
+     * Gets the long array value at the given index or returns an empty long array
      * if there is no long array value at the given index.
      *
      * @param index The index.
@@ -318,7 +318,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the list tag value at the given index, or returns the
+     * Gets the list tag value at the given index or returns the
      * default value if there is no list tag value at the given index.
      *
      * @param index The index.
@@ -329,7 +329,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getList(index: Int, defaultValue: ListTag): ListTag
 
     /**
-     * Gets the list tag value at the given index, or returns an empty list tag
+     * Gets the list tag value at the given index or returns an empty list tag
      * if there is no list tag value at the given index.
      *
      * @param index The index.
@@ -341,7 +341,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     }
 
     /**
-     * Gets the compound tag value at the given index, or returns the
+     * Gets the compound tag value at the given index or returns the
      * default value if there is no compound tag value at the given index.
      *
      * @param index The index.
@@ -352,7 +352,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
     fun getCompound(index: Int, defaultValue: CompoundTag): CompoundTag
 
     /**
-     * Gets the compound tag value at the given index, or returns an empty compound tag
+     * Gets the compound tag value at the given index or returns an empty compound tag
      * if there is no compound tag value at the given index.
      *
      * @param index The index.
@@ -650,35 +650,35 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
      *
      * @param action The action to perform.
      */
-    fun forEachByteArray(action: Consumer<ByteArray?>)
+    fun forEachByteArray(action: Consumer<ByteArray>)
 
     /**
      * Performs the given action on every int array in this list.
      *
      * @param action The action to perform.
      */
-    fun forEachIntArray(action: Consumer<IntArray?>)
+    fun forEachIntArray(action: Consumer<IntArray>)
 
     /**
      * Performs the given action on every long array in this list.
      *
      * @param action The action to perform.
      */
-    fun forEachLongArray(action: Consumer<LongArray?>)
+    fun forEachLongArray(action: Consumer<LongArray>)
 
     /**
      * Performs the given action on every list tag in this list.
      *
      * @param action The action to perform.
      */
-    fun forEachList(action: Consumer<ListTag?>)
+    fun forEachList(action: Consumer<ListTag>)
 
     /**
      * Performs the given action on every compound tag in this list.
      *
      * @param action The action to perform.
      */
-    fun forEachCompound(action: Consumer<CompoundTag?>)
+    fun forEachCompound(action: Consumer<CompoundTag>)
 
     /**
      * Converts this list tag to its mutable equivalent.

@@ -8,7 +8,7 @@ import xyz.axie.nbt.*
  */
 object Types {
 
-    private val TYPES: Array<TagType<out Tag>> = arrayOf<TagType<*>>(
+    private val TYPES: Array<TagType<out Tag>> = arrayOf(
         EndTag.TYPE,
         ByteTag.TYPE,
         ShortTag.TYPE,

@@ -1,5 +1,6 @@
 package xyz.axie.nbt
 
+import org.pcollections.TreePVector
 import xyz.axie.nbt.ListTag.Companion.ID
 import xyz.axie.nbt.ListTag.Companion.TYPE
 import xyz.axie.nbt.impl.ImmutableListTagImpl
@@ -9,8 +10,6 @@ import xyz.axie.nbt.util.ShortConsumer
 import xyz.axie.nbt.util.Types
 import xyz.axie.nbt.visitor.StreamingTagVisitor
 import xyz.axie.nbt.visitor.TagVisitor
-import org.pcollections.TreePVector
-import xyz.axie.nbt.*
 import java.io.DataInput
 import java.io.DataOutput
 import java.io.IOException
@@ -114,13 +113,13 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
     override fun getList(index: Int, defaultValue: ListTag): ListTag {
         if (index < 0 || index >= size) return defaultValue
         val tag = get(index)
-        return if (tag is ListTag) tag else defaultValue
+        return tag as? ListTag ?: defaultValue
     }
 
     override fun getCompound(index: Int, defaultValue: CompoundTag): CompoundTag {
         if (index < 0 || index >= size) return defaultValue
         val tag = get(index)
-        return if (tag is CompoundTag) tag else defaultValue
+        return tag as? CompoundTag ?: defaultValue
     }
 
     abstract override fun set(index: Int, tag: Tag): T
@@ -223,31 +222,31 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
         }
     }
 
-    override fun forEachByteArray(action: Consumer<ByteArray?>) {
+    override fun forEachByteArray(action: Consumer<ByteArray>) {
         for (i in 0 until size) {
             action.accept(getByteArray(i))
         }
     }
 
-    override fun forEachIntArray(action: Consumer<IntArray?>) {
+    override fun forEachIntArray(action: Consumer<IntArray>) {
         for (i in 0 until size) {
             action.accept(getIntArray(i))
         }
     }
 
-    override fun forEachLongArray(action: Consumer<LongArray?>) {
+    override fun forEachLongArray(action: Consumer<LongArray>) {
         for (i in 0 until size) {
             action.accept(getLongArray(i))
         }
     }
 
-    override fun forEachList(action: Consumer<ListTag?>) {
+    override fun forEachList(action: Consumer<ListTag>) {
         for (i in 0 until size) {
             action.accept(getList(i))
         }
     }
 
-    override fun forEachCompound(action: Consumer<CompoundTag?>) {
+    override fun forEachCompound(action: Consumer<CompoundTag>) {
         for (i in 0 until size) {
             action.accept(getCompound(i))
         }
@@ -373,7 +372,7 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
                     if (id == EndTag.ID && size > 0) throw RuntimeException("Missing required type for list tag!")
                     val type: TagType<*> = Types.of(id)
                     val data: MutableList<Tag> = ArrayList(size)
-                    for (i in 0 until size) {
+                    repeat(size) {
                         data.add(type.load(input, depth + 1))
                     }
                     return ImmutableListTagImpl(TreePVector.from(data), id)

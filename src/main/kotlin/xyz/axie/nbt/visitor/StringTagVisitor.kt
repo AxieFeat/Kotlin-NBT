@@ -4,7 +4,7 @@ import xyz.axie.nbt.*
 import java.util.regex.Pattern
 
 /**
- * A tag visitor that visits a tag and converts it in to standard SNBT form.
+ * A tag visitor that visits a tag and converts it in to a standard SNBT form.
  */
 class StringTagVisitor : TagVisitor {
 
