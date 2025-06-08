@@ -643,7 +643,7 @@ interface ListTag : CollectionTag<Tag>, ScopedTag<ListTag> {
      *
      * @param action The action to perform.
      */
-    fun forEachString(action: Consumer<String?>)
+    fun forEachString(action: Consumer<String>)
 
     /**
      * Performs the given action on every byte array in this list.

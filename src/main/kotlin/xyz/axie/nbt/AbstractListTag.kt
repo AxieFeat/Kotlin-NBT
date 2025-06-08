@@ -216,7 +216,7 @@ internal abstract class AbstractListTag<T : ListTag> : ListTag {
         }
     }
 
-    override fun forEachString(action: Consumer<String?>) {
+    override fun forEachString(action: Consumer<String>) {
         for (i in 0 until size) {
             action.accept(getString(i))
         }
