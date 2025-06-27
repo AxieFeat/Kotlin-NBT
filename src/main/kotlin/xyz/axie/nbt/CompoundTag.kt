@@ -57,7 +57,7 @@ interface CompoundTag : ScopedTag<CompoundTag> {
      *
      * @return The keys.
      */
-    fun keySet(): Set<String?>
+    fun keySet(): Set<String>
 
     /**
      * Gets the values in this compound tag.
@@ -922,6 +922,7 @@ interface CompoundTag : ScopedTag<CompoundTag> {
          */
         @Contract(value = "_, _, _ -> this", mutates = "this")
         fun putList(name: String, elementType: Int, elements: Collection<Tag>): Builder
+
 
         /**
          * Removes the value for the given key from this builder.
